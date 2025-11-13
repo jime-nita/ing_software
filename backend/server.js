@@ -6,12 +6,10 @@ const connectDB = require('./config/db')
 const { errorHandler } = require('./middleware/errorMiddleware');
 const cors = require('cors');
 
-// Habilitar CORS
-app.use(cors()); 
-
 connectDB();
 
 const app = express(); 
+app.use(cors()); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
