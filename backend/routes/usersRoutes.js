@@ -5,8 +5,8 @@ const {login, register, data} = require('../controllers/usersControllers')
 const {protect} = require('../middleware/authMiddleware')
 
 //endpoints publicos
-router.post('/login', protect, login)
-router.post('/register', protect, register)
+router.post('/login', login)
+router.post('/register', register)
 
 //endpoints privado
 router.get('/data', protect, data)
