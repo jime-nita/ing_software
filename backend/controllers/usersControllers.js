@@ -18,7 +18,7 @@ const login = asyncHandler (async(req, res) => {
         })
     } else {
         res.status(401)
-        throw new Error('Credenciales invalidas :(')
+        throw new Error('Credenciales invalidas')
     }
 })
 
@@ -26,14 +26,14 @@ const register = asyncHandler(async(req, res) => {
     const {nombre, email, password} = req.body
     if(!nombre || !email || !password){
         res.status(400)
-        throw new Error('Porfi, rellena todos los campos <3')
+        throw new Error('Porfavor, rellena todos los campos')
     }
 
     //vemos si esta conectado ya el usuario a la base de datos
     const userExists = await User.findOne({email})
     if(userExists){
         res.status(400)
-        throw new Error('El usuario ya existe, prueba con otro email :D')
+        throw new Error('El usuario ya existe, prueba con otro email')
     } else {
         //hash password
         const salt = await bcrypt.genSalt(10)
